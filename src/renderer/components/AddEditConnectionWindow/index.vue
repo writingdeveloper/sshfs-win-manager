@@ -1,39 +1,39 @@
 <template>
   <Window :title="title">
     <div class="wrap">
-      <Tabs>
-        <Tab label="BASIC" active>
+      <!-- <Tabs> -->
+        <!-- <Tab label="BASIC" active> -->
           <div class="form-item">
-            <label>Name</label>
-            <input type="text" autofocus placeholder="eg. My development server 1" v-model="conn.name">
+            <label>드라이브 명</label>
+            <input type="text" autofocus placeholder="ex) 지오맥 드라이브" disabled v-model="conn.name">
           </div>
 
-          <h1 class="section-title">Connection</h1>
+          <h1 class="section-title">로그인 정보</h1>
           <div class="form-row">
-            <div class="form-item">
+            <!-- <div class="form-item">
               <label>IP/Host</label>
               <input type="text" placeholder="eg. 127.0.0.1 or my.domain.com" v-model="conn.host">
-            </div>
-            <div class="form-item" style="flex: 0 0 80px">
-              <label>Port</label>
-              <input type="text" placeholder="eg. 22" v-model.number="conn.port">
-            </div>
+            </div> -->
+            <!-- <div class="form-item" style="flex: 0 0 80px"> -->
+              <!-- <label>Port</label> -->
+              <!-- <input type="text" placeholder="eg. 22" v-model.number="conn.port"> -->
+            <!-- </div> -->
           </div>
-          <div class="form-item">
-            <label>User</label>
-            <input type="text" placeholder="eg. root" v-model="conn.user">
+          <div class="form-item" style="flex: 0 0 80px">
+            <label>아이디</label>
+            <input type="text" placeholder="" v-model="conn.user">
           </div>
-          <div class="form-item">
-            <label>Authentication method</label>
-            <select v-model="conn.authType" @change="authTypeChange">
-              <option value="password">Password</option>
-              <option value="password-ask">Password (ask on connect)</option>
-              <option value="key-file">Private Key (file)</option>
+          <!-- <div class="form-item"> -->
+            <!-- <label>Authentication method</label> -->
+            <!-- <select v-model="conn.authType" @change="authTypeChange"> -->
+              <!-- <option value="password">Password</option> -->
+              <!-- <option value="password-ask">Password (ask on connect)</option> -->
+              <!-- <option value="key-file">Private Key (file)</option> -->
               <!-- <option value="key-input" disabled>Private Key (input)</option> -->
-            </select>
-          </div>
+            <!-- </select> -->
+          <!-- </div> -->
           <div v-show="conn.authType === 'password'" class="form-item">
-            <label>Password</label>
+            <label>패스워드</label>
             <input type="password" v-model="conn.password">
           </div>
           <div v-show="conn.authType === 'key-file'" class="form-item">
@@ -45,21 +45,21 @@
             <textarea placeholder="eg. ssh-rsa AAAAB3Nz..." v-model="conn.key"></textarea>
           </div>
 
-          <h1 class="section-title">Remote</h1>
+          <!-- <h1 class="section-title">Remote</h1>
           <div class="form-item">
             <label>Path</label>
             <input type="text" placeholder="eg. /home/john" v-model="conn.folder">
-          </div>
+          </div> -->
 
-          <h1 class="section-title">Local</h1>
+          <!-- <h1 class="section-title">Local</h1>
           <div class="form-item">
             <label>Drive letter</label>
             <select v-model="conn.mountPoint">
               <option v-for="drive in drives" :value="drive + ':'" :key="drive">{{drive}}:</option>
             </select>
-          </div>
-        </Tab>
-        <Tab label="ADVANCED">
+          </div> -->
+        <!-- </Tab> -->
+        <!-- <Tab label="ADVANCED">
           <div class="form-item">
             <SwitchLabel label="Connect on Startup" v-model="conn.advanced.connectOnStartup"/>
           </div>
@@ -69,12 +69,12 @@
 
             <CustomCmdlOptions v-model="conn.advanced.customCmdlOptions"/>
           </div>
-        </Tab>
-      </Tabs>
+        </Tab> -->
+      <!-- </Tabs> -->
 
       <div class="footer">
-        <button class="btn" @click="cancel">Cancel</button>
-        <button class="btn default" @click="save">Save</button>
+        <button class="btn" @click="cancel">종료</button>
+        <button class="btn default" @click="save">로그인</button>
       </div>
     </div>
   </Window>
@@ -131,16 +131,16 @@ export default {
     return {
       isEditingMode: false,
 
-      title: 'Add Connection',
+      title: 'Geomec Cloud Manager 로그인',
       drives: 'EFGHIJKLMNOPQRSTUVWXYZ',
 
       conn: {
         uuid: uuid(),
-        name: '',
-        host: '',
+        name: 'Geomec Cloud',
+        host: 'cloud.stpsystem.co.kr',
         port: 22,
         user: '',
-        folder: '/',
+        folder: '/Data Storage/File Server',
         authType: 'password',
         password: '',
         keyFile: process.env.USERPROFILE + '\\.ssh\\id_rsa',
@@ -161,7 +161,7 @@ export default {
     if (this.$route.name === 'edit-connection') {
       this.isEditingMode = true
 
-      this.title = 'Edit Connection'
+      this.title = '수정 모드'
 
       this.conn = this.$store.state.Data.connections.find(a => a.uuid === this.$route.params.uuid)
     }

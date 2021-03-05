@@ -1,11 +1,11 @@
 <template>
-  <Window title="SSHFS-Win Manager" closeAction="hide" @close="showRunningInBackgroundNotification">
+  <Window title="Geomec Cloud Manager" closeAction="hide" @close="showRunningInBackgroundNotification">
     <div class="wrap">
       <div class="left">
         <div class="connection-list" :class="{'has-debug-panel': appSettings.showDebugPanel}">
           <div v-if="!hasConnections" class="no-data">
-            <h1>No servers added yet</h1>
-            <p>Try clicking at 'Add Server' in the panel aside</p>
+            <h3>아직 서버가 추가되지 않았습니다</h3>
+            <p>연결 추가버튼을 클릭하여 서버를 추가하세요</p>
           </div>
 
           <draggable :list="connections" @end="updateConnectionList" chosenClass="highlight-item" dragClass="hide-dragging-item" handle=".grip" animation="200">
@@ -30,18 +30,18 @@
       <div class="right">
         <button class="btn" :disabled="listMode !== 'none'" @click="addNewConnection">
           <Icon icon="plus"/>
-          Add Connection
+          연결 추가
         </button>
 
         <div class="sep"></div>
 
         <button class="btn" :class="{ 'active': isEditModeEnabled }" :disabled="!hasConnections" @click="toggleEditMode">
           <Icon icon="pen"/>
-          Edit mode
+          수정 모드
         </button>
         <button class="btn" :class="{ 'active': isDeleteModeEnabled }" :disabled="!hasConnections" @click="toggleDeleteMode">
           <Icon icon="trashCan"/>
-          Delete mode
+          삭제 모드
         </button>
 
         <div class="bottom-actions">
@@ -51,11 +51,11 @@
           </button>
           <button class="btn" @click="settings">
             <Icon icon="settings"/>
-            Settings
+            환경설정
           </button>
           <button class="btn" @click="about">
             <Icon icon="help"/>
-            About
+            프로그램 정보
           </button>
         </div>
       </div>
@@ -161,7 +161,7 @@ export default {
 
     addNewConnection () {
       const window = windowManager.createNew('add-new-connection-window', '', '/index.html#add-new-connection', null, {
-        height: 770,
+        height: 500,
         width: 500,
         useContentSize: true,
         frame: false,
@@ -176,10 +176,10 @@ export default {
         window.object.show()
       })
     },
-
+    // 수정 모드 관리 페이지
     editConnection (conn) {
       const window = windowManager.createNew('edit-connection-window', '', `/index.html#edit-connection/${conn.uuid}`, null, {
-        height: 770,
+        height: 500,
         width: 500,
         useContentSize: true,
         frame: false,
@@ -286,7 +286,7 @@ export default {
     copyDebugOutput () {
       clipboard.writeText(this.debugOutput)
 
-      this.notify('Debug output copied to clipboard')
+      this.notify('디버깅 출력 정보가 클립보드에 복사되었습니다.')
     },
 
     updateConnectionList () {

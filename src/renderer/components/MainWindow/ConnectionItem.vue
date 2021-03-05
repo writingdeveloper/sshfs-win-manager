@@ -11,10 +11,12 @@
     </div>
 
     <div class="info">
+      <!-- 연결 타이틀 -->
       <div class="title">{{conn.name}}</div>
 
       <div class="details">
         <span class="local-path">
+          <!-- 등록 마운트 포인트 -->
           {{conn.mountPoint}}
         </span>
 

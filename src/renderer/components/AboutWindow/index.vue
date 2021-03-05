@@ -5,21 +5,21 @@
         <img class="logo" src="@/assets/app-logo.png">
       </div>
       <div class="content">
-        <h1>SSHFS-Win Manager</h1>
+        <h1>Geomec-Cloud Manager</h1>
         <p class="repo-url">
-          <a href="https://github.com/evsar3/sshfs-win-manager">https://github.com/evsar3/sshfs-win-manager</a>
+          <a href="https://github.com/writingdeveloper">github.com/writingdeveloper</a>
         </p>
-        <p class="donate-btn">
+        <!-- <p class="donate-btn">
           <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HXZUJ8WX47238">
             <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" alt="Donate" title="PayPal - The safer, easier way to pay online!">
           </a>
-        </p>
+        </p> -->
         <p>
           Version: {{appVersion}}<br>
-          Author: Evandro Araujo (<a href="https://github.com/evsar3">@evsar3</a>)
+          개발자: Geomec 개발자 이시형 (<a href="https://github.com/writingdeveloper/Geomec-Storage-Manager">@writingdeveloper</a>)
         </p>
-        <p>This program is licensed under <a href="https://opensource.org/licenses/MIT">MIT license</a></p>
-        <p>This program contains parts of following open-source projects:
+        <p>이 프로그램은 <a href="https://opensource.org/licenses/MIT">MIT license</a> 라이센스를 따르고 있습니다.</p>
+        <p>이 프로그램은 아래와 같은 오픈소스 프로젝트들을 포함하고 있습니다.
           <ul>
             <li>Node.js (<a href="https://github.com/nodejs/node">https://github.com/nodejs/node</a>)</li>
             <li>Electron (<a href="https://github.com/electron/electron">https://github.com/electron/electron</a>)</li>
@@ -28,7 +28,7 @@
             <li>SSHFS-Win (<a href="https://github.com/billziss-gh/sshfs-win">https://github.com/billziss-gh/sshfs-win</a>)</li>
           </ul>
         </p>
-        <p>Icons kindly provided by <a href="https://icons8.com">Icons8.com</a></p>
+        <p>버튼 아이콘들은 <a href="https://icons8.com">Icons8.com</a>에서 제공되었습니다.</p>
       </div>
     </div>
   </Window>
